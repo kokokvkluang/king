@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up</title>
+    <style>
+        
+        /* Basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #4945a0;
+        }
+        .toggle-btn {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .toggle-btn button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .active {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="auth-form" action="/authenticate" method="post">
+            <div class="toggle-btn">
+                <a href="SUKAN DAN PERMAINAN ">
+                   <button type="button" id="signin-btn" class="active">Sign In</button>
+                   <button type="button" id="signup-btn">Sign Up</button>
+                </a>
+            </div>
+            <fieldset id="signin-section">
+                <legend>Sign In</legend>
+                <label for="signin-username">Username or Email:</label>
+                <input type="text" id="signin-username" name="signin-username" required>
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" name="signin-password" required>
+                <input type="submit" value="Sign In">
+            </fieldset>
+            <fieldset id="signup-section" style="display: none;">
+                <legend>Sign Up</legend>
+                <label for="signup-fullname">Full Name:</label>
+                <input type="text" id="signup-fullname" name="signup-fullname" required>
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="signup-email" required>
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="signup-username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="signup-password" required>
+                <input type="submit" value="Sign Up">
+            </fieldset>
+        </form>
+    </div>
+    <!--copy from login-->
+      <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript for form handling -->
+  <script>
+    // Handle form submission
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submit
+
+      // Perform your sign-in logic here (e.g., validate credentials, redirect user)
+      // For demonstration purposes, alert the entered username and redirect to a welcome page
+      var username = document.getElementById('username').value;
+      alert('Welcome, ' + username + '!'); // Replace with your logic
+
+      // Example redirect
+      window.location.href = 'welcome.html'; // Replace with your actual welcome page URL
+    });
+  </script>
+
+</body>
+</html>
+<!--end-->
+    
+    <script>
+
+        // JavaScript to toggle between sign-in and sign-up sections
+        const signinBtn = document.getElementById('signin-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const signinSection = document.getElementById('signin-section');
+        const signupSection = document.getElementById('signup-section');
+
+        signinBtn.addEventListener('click', () => {
+            signinBtn.classList.add('active');
+            signupBtn.classList.remove('active');
+            signinSection.style.display = 'block';
+            signupSection.style.display = 'none';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupBtn.classList.add('active');
+            signinBtn.classList.remove('active');
+            signupSection.style.display = 'block';
+            signinSection.style.display = 'none';
+            
+        });
+    </script>
+</body>
+</html>
